@@ -1,674 +1,670 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Henrique &amp; Julia · 03.02.2027</title>
-  <meta name="description" content="Convite de casamento de Henrique e Julia — 03 de fevereiro de 2027, às 16h, em Salvador - BA.">
-  <meta property="og:title" content="Henrique & Julia · 03.02.2027">
-  <meta property="og:description" content="Você é nosso convidado! Cerimônia às 16h em Salvador - BA.">
-  <meta property="og:image" content="assets/casal.jpg">
-  <meta name="theme-color" content="#5da7d2">
-  <link rel="icon" href="assets/monograma.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --azul: #5da7d2;
-      --azul-escuro: #3e7fa6;
-      --azul-claro: #e8f2f9;
-      --grafite: #545454;
-      --texto: #3d4a54;
-      --branco: #ffffff;
-      --creme: #fbfaf7;
-      --linha: rgba(93, 167, 210, .35);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Montserrat", system-ui, sans-serif;
-      font-weight: 300;
-      color: var(--texto);
-      background: var(--creme);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Henrique &amp; Julia — Casamento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#4A89B3;
+    --clay-deep:#2F6189;
+    --clay-soft:#B9D5E8;
+    --sand:#9DBFD6;
+    --sand-deep:#6B8DA5;
+    --paper:#F8F7F3;
+    --paper-2:#ECF2F6;
+    --ink:#33414D;
+    --ink-soft:#5D6A75;
+    --line:#D9E3EA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;overflow-x:hidden;overscroll-behavior-x:none;}
+  body{
+    background:var(--paper);
+    color:var(--ink-soft);
+    font-family:'Jost',sans-serif;font-weight:300;
+    overflow-x:hidden;position:relative;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:url('midia/papel.svg');background-size:cover;
+    opacity:.5;mix-blend-mode:multiply;
+  }
+  img{display:block;max-width:100%;}
 
-    .serif { font-family: "Cormorant Garamond", Georgia, serif; }
-    .script { font-family: "Great Vibes", cursive; font-weight: 400; }
+  /* ───────── MONOGRAMA (imagem oficial H & J) ───────── */
+  .monoimg{
+    background-image:url('midia/monograma.svg');
+    background-size:contain;background-repeat:no-repeat;background-position:center;
+    aspect-ratio:.745;height:auto;
+  }
+  .splash-monoimg{width:min(54vw,230px);margin:0 auto;opacity:0;animation:fadeUp 1s .25s forwards;}
+  .hero-monoimg{width:min(66vw,248px);margin:0 auto 4px;}
+  .footer-monoimg{width:min(36vw,140px);margin:0 auto 18px;}
 
-    /* ---------- Capa ---------- */
-    .capa {
-      min-height: 100svh;
-      background: var(--azul);
-      color: var(--branco);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 48px 20px 72px;
-      position: relative;
-    }
-    .capa .monograma { width: min(260px, 62vw); height: auto; }
-    .capa .convite {
-      margin-top: 28px;
-      font-size: .78rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      font-weight: 400;
-    }
-    .capa h1 {
-      font-family: "Great Vibes", cursive;
-      font-weight: 400;
-      font-size: clamp(3rem, 12vw, 5.5rem);
-      line-height: 1.1;
-      margin: 8px 0 4px;
-    }
-    .capa .data {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.3rem, 4.5vw, 1.8rem);
-      letter-spacing: .2em;
-    }
-    .capa .data span { opacity: .7; margin: 0 .35em; }
-    .capa .hora {
-      font-size: .85rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-    .rolar {
-      position: absolute;
-      bottom: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 28px; height: 44px;
-      border: 1.5px solid rgba(255,255,255,.8);
-      border-radius: 14px;
-    }
-    .rolar::after {
-      content: "";
-      position: absolute;
-      top: 8px; left: 50%;
-      width: 4px; height: 8px;
-      margin-left: -2px;
-      background: #fff;
-      border-radius: 2px;
-      animation: rolar 1.8s infinite;
-    }
-    @keyframes rolar { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(14px); } }
+  /* ───────── SPLASH ───────── */
+  #splash{
+    position:fixed;inset:0;z-index:1000;background:var(--paper);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    cursor:pointer;overflow:hidden;
+    transition:opacity 1s ease, transform 1s ease;
+  }
+  #splash.hide{opacity:0;transform:scale(1.03);}
+  #splash::after{content:'';position:absolute;inset:0;background-image:url('midia/papel.svg');background-size:cover;opacity:.5;mix-blend-mode:multiply;pointer-events:none;}
+  #leaves{position:absolute;inset:0;z-index:1;pointer-events:none;}
+  .leaf-fall{position:absolute;opacity:0;animation:fall linear infinite;}
+  .splash-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+  .splash-mono{--mc:var(--sand-deep);opacity:0;font-size:42px;animation:fadeUp 1s .2s forwards;}
+  .splash-mono .mono-sprig{width:42px;}
+  .splash-names{
+    font-family:'Bodoni Moda',serif;font-weight:400;
+    font-size:clamp(40px,12vw,70px);line-height:.96;color:var(--ink);
+    text-align:center;margin-top:26px;letter-spacing:.01em;
+    opacity:0;animation:fadeUp 1s .55s forwards;
+  }
+  .splash-names .amp{font-style:italic;color:var(--clay);font-weight:400;display:block;font-size:.5em;margin:.06em 0;}
+  .splash-date{
+    margin-top:22px;font-size:12px;font-weight:300;letter-spacing:.55em;
+    color:var(--clay-deep);text-indent:.55em;opacity:0;animation:fadeUp 1s .85s forwards;
+  }
+  .splash-hint{
+    position:absolute;bottom:54px;z-index:2;font-size:15px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--clay-deep);font-weight:400;opacity:0;
+    animation:pulse 2.6s 1.6s infinite;text-indent:.32em;
+    border:1px solid var(--clay-soft);padding:14px 30px;border-radius:40px;
+  }
 
-    /* ---------- Seções ---------- */
-    section { padding: 80px 20px; }
-    .container { max-width: 760px; margin: 0 auto; }
-    .titulo {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-    .titulo small {
-      display: block;
-      font-size: .72rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: var(--azul-escuro);
-      font-weight: 500;
-    }
-    .titulo h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: clamp(2rem, 7vw, 2.8rem);
-      color: var(--grafite);
-      line-height: 1.2;
-      margin-top: 6px;
-    }
-    .ramo {
-      display: block;
-      width: 90px;
-      height: 1px;
-      background: var(--azul);
-      margin: 18px auto 0;
-      position: relative;
-    }
-    .ramo::after {
-      content: "♡";
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -54%);
-      background: var(--creme);
-      color: var(--azul);
-      padding: 0 8px;
-      font-size: .9rem;
-    }
-    .fundo-branco .ramo::after { background: var(--branco); }
-    .fundo-branco { background: var(--branco); }
+  /* ───────── MAIN ───────── */
+  #main{display:none;position:relative;z-index:1;}
+  #main.visible{display:block;}
+  .wrap{max-width:540px;margin:0 auto;position:relative;}
+  section{position:relative;}
+  .inner{padding:0 34px;}
+  .sec-label{
+    font-size:10.5px;letter-spacing:.45em;text-transform:uppercase;
+    color:var(--clay-deep);text-align:center;text-indent:.45em;
+  }
+  .sec-title{
+    font-family:'Bodoni Moda',serif;font-weight:400;
+    font-size:clamp(28px,8vw,40px);color:var(--ink);text-align:center;
+    line-height:1.08;margin-top:12px;
+  }
+  .sec-title .it{font-style:italic;color:var(--clay);}
+  .divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 0;max-width:230px;}
+  .divider .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line));}
+  .divider .ln.r{background:linear-gradient(90deg,var(--line),transparent);}
+  .divider .dot{width:5px;height:5px;border:1px solid var(--clay);transform:rotate(45deg);}
 
-    /* Foto do casal */
-    .foto-casal {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 36px;
-      align-items: center;
-    }
-    .foto-casal figure {
-      position: relative;
-      max-width: 380px;
-      margin: 0 auto;
-    }
-    .foto-casal figure::before {
-      content: "";
-      position: absolute;
-      inset: -12px 12px 12px -12px;
-      border: 1px solid var(--azul);
-      border-radius: 200px 200px 6px 6px;
-    }
-    .foto-casal img {
-      position: relative;
-      border-radius: 200px 200px 6px 6px;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      object-position: center 35%;
-      width: 100%;
-      box-shadow: 0 18px 40px rgba(30, 60, 80, .15);
-    }
-    .foto-casal .texto { text-align: center; }
-    .foto-casal .texto p { margin-bottom: 14px; }
-    .foto-casal .texto .script { font-size: 2.4rem; color: var(--azul-escuro); line-height: 1.2; }
-    @media (min-width: 720px) {
-      .foto-casal { grid-template-columns: 1fr 1fr; }
-      .foto-casal .texto { text-align: left; }
-    }
+  /* ───────── HERO ───────── */
+  .hero{padding-top:0;}
+  .hero-photo{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:58vh;min-height:400px;max-height:680px;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 50%,rgba(0,0,0,.55) 73%,rgba(0,0,0,0) 95%);
+            mask-image:linear-gradient(to bottom,#000 0%,#000 50%,rgba(0,0,0,.55) 73%,rgba(0,0,0,0) 95%);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.94) contrast(.98);}
+  .hero-photo::before{
+    content:'';position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg, rgba(47,97,137,.08) 0%, rgba(47,97,137,0) 24%, rgba(157,191,214,.05) 100%);
+  }
+  .hero-cap{position:relative;z-index:2;text-align:center;padding:0 28px;margin-top:-86px;}
+  .hero-mono{--mc:var(--ink);opacity:.92;margin:0 auto 16px;font-size:26px;}
+  .hero-mono .mono-sprig{width:30px;}
+  .hero-names{
+    font-family:'Great Vibes',cursive;font-weight:400;color:var(--ink);
+    font-size:clamp(54px,16vw,92px);line-height:.9;letter-spacing:.01em;
+  }
+  .hero-names .amp{display:block;font-style:normal;color:var(--clay);font-size:.6em;margin:.02em 0;}
+  .hero-sub{margin-top:18px;font-size:11.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--clay-deep);text-indent:.4em;}
 
-    /* Contagem regressiva */
-    .contagem {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .contagem div {
-      background: var(--azul-claro);
-      border-radius: 10px;
-      padding: 16px 4px 12px;
-    }
-    .contagem strong {
-      display: block;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.8rem, 7vw, 2.6rem);
-      font-weight: 500;
-      color: var(--azul-escuro);
-      line-height: 1;
-    }
-    .contagem span {
-      font-size: .65rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
+  /* ───────── VERSE ───────── */
+  #verse{padding:74px 0 64px;text-align:center;}
+  .verse-q{
+    font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;
+    font-size:clamp(20px,5.4vw,26px);line-height:1.6;color:var(--ink);
+    max-width:430px;margin:0 auto;
+  }
+  .verse-ref{margin-top:24px;font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--sand-deep);text-indent:.4em;}
 
-    /* Versículo */
-    .versiculo {
-      position: relative;
-      background: url("assets/maos.jpg") center / cover no-repeat;
-      color: var(--branco);
-      text-align: center;
-      padding: 120px 20px;
-    }
-    .versiculo::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(36, 82, 112, .55), rgba(36, 82, 112, .62));
-    }
-    .versiculo .container { position: relative; }
-    .versiculo blockquote {
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-      font-size: clamp(1.45rem, 5vw, 2.1rem);
-      line-height: 1.45;
-    }
-    .versiculo cite {
-      display: block;
-      margin-top: 18px;
-      font-style: normal;
-      font-size: .78rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-    }
+  /* ───────── BÊNÇÃO / PAIS ───────── */
+  #bencao{padding:16px 0 10px;}
+  .parents-block{text-align:center;}
+  .parents-k{font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--clay-deep);text-indent:.34em;}
+  .parents-v{font-family:'Bodoni Moda',serif;font-size:19px;color:var(--ink);margin-top:11px;line-height:1.5;}
+  .parents-v .mem{font-style:italic;font-size:13px;color:var(--clay);}
 
-    /* Locais */
-    .locais {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media (min-width: 720px) { .locais { grid-template-columns: 1fr 1fr; } }
-    .card {
-      background: var(--branco);
-      border: 1px solid var(--linha);
-      border-radius: 14px;
-      padding: 32px 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .fundo-branco .card { background: var(--creme); }
-    .card .icone {
-      width: 54px; height: 54px;
-      border-radius: 50%;
-      background: var(--azul-claro);
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-      margin-bottom: 14px;
-    }
-    .card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.7rem;
-      font-weight: 500;
-      color: var(--grafite);
-      line-height: 1.2;
-    }
-    .card .local {
-      font-size: .78rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--azul-escuro);
-      font-weight: 500;
-      margin: 6px 0 12px;
-    }
-    .card address { font-style: normal; font-size: .95rem; margin-bottom: 22px; flex: 1; }
-    .botao {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--azul);
-      color: var(--branco);
-      text-decoration: none;
-      font-size: .75rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      font-weight: 500;
-      padding: 13px 26px;
-      border-radius: 40px;
-      transition: background .2s, transform .2s;
-    }
-    .botao:hover { background: var(--azul-escuro); transform: translateY(-1px); }
-    .botao.contorno { background: transparent; color: var(--azul-escuro); border: 1px solid var(--azul); }
-    .botao.contorno:hover { background: var(--azul-claro); }
-    .botao svg { width: 16px; height: 16px; }
-    .acoes { text-align: center; margin-top: 30px; }
+  /* ───────── DAY / LOCATIONS ───────── */
+  #day{padding:44px 0 8px;}
+  .quickfacts{display:flex;justify-content:center;gap:0;margin:40px 0 8px;}
+  .qf{flex:1;text-align:center;padding:0 8px;max-width:180px;}
+  .qf + .qf{border-left:1px solid var(--line);}
+  .qf .k{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--clay-deep);}
+  .qf .v{font-family:'Bodoni Moda',serif;font-size:19px;color:var(--ink);margin-top:9px;line-height:1.25;}
+  .qf .v small{display:block;font-family:'Jost';font-size:11px;letter-spacing:.04em;color:var(--ink-soft);margin-top:3px;}
 
-    /* Traje */
-    .traje { text-align: center; }
-    .traje p { margin-bottom: 18px; }
-    .cores {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      justify-content: center;
-      margin: 28px 0;
-    }
-    .cor {
-      flex: 1 1 220px;
-      max-width: 300px;
-      background: var(--branco);
-      border: 1px solid var(--linha);
-      border-radius: 14px;
-      padding: 24px 18px;
-    }
-    .cor .amostra {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      margin: 0 auto 12px;
-      position: relative;
-      border: 1px solid #d9dde0;
-    }
-    .cor .amostra::after {
-      content: "";
-      position: absolute;
-      left: 50%; top: -6px; bottom: -6px;
-      width: 2px;
-      background: #c0392b;
-      transform: translateX(-50%) rotate(45deg);
-      border-radius: 2px;
-    }
-    .cor strong {
-      display: block;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--grafite);
-    }
-    .cor span { font-size: .9rem; }
-    .obrigado-traje {
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-      font-size: 1.3rem;
-      color: var(--azul-escuro);
-    }
+  .place{margin-top:52px;}
+  .place-art{position:relative;width:100%;overflow:hidden;border-radius:2px;}
+  .place-art img{width:100%;height:auto;filter:saturate(.94) contrast(.98);}
+  .place-body{text-align:center;margin-top:22px;}
+  .place-tag{
+    display:inline-block;font-size:10px;letter-spacing:.42em;text-transform:uppercase;
+    color:#fff;background:var(--clay-deep);padding:7px 16px;text-indent:.42em;
+  }
+  .place-time{font-family:'Bodoni Moda',serif;font-style:italic;font-size:24px;color:var(--clay);margin-top:16px;}
+  .place-name{font-family:'Bodoni Moda',serif;font-size:23px;color:var(--ink);margin-top:8px;line-height:1.25;}
+  .place-addr{font-size:13px;line-height:1.7;color:var(--ink-soft);margin-top:12px;max-width:360px;margin-left:auto;margin-right:auto;}
+  .btn-line{
+    display:inline-flex;align-items:center;gap:9px;margin-top:20px;
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);
+    border:1px solid var(--ink);padding:12px 24px;text-decoration:none;text-indent:.26em;
+    transition:.35s;background:transparent;
+  }
+  .btn-line:hover{background:var(--ink);color:var(--paper);}
+  .btn-line svg{width:13px;height:13px;}
+  .place-divider{width:1px;height:60px;background:linear-gradient(var(--line),transparent,var(--line));margin:50px auto 0;}
 
-    /* Manual */
-    .manual-intro { text-align: center; margin-bottom: 30px; }
-    .manual-intro p + p { margin-top: 10px; }
-    .itens { display: grid; gap: 12px; }
-    details {
-      background: var(--creme);
-      border: 1px solid var(--linha);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--grafite);
-      letter-spacing: .04em;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary .emoji { font-size: 1.3rem; width: 30px; text-align: center; }
-    summary::after {
-      content: "+";
-      margin-left: auto;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 300;
-      font-size: 1.5rem;
-      color: var(--azul);
-      transition: transform .25s;
-    }
-    details[open] summary::after { transform: rotate(45deg); }
-    details .conteudo { padding: 0 20px 20px 64px; }
-    details .conteudo p + p { margin-top: 8px; }
-    details ul { list-style: none; }
-    details li { margin-bottom: 6px; }
-    @media (max-width: 480px) { details .conteudo { padding-left: 20px; } }
-    .assinatura { text-align: center; margin-top: 40px; }
-    .assinatura p + p { margin-top: 6px; }
-    .assinatura .script { font-size: 2.6rem; color: var(--azul-escuro); line-height: 1.2; }
+  /* ───────── COUNTDOWN ───────── */
+  #countdown{padding:78px 0;text-align:center;}
+  .cd-wrap{display:flex;justify-content:center;gap:0;margin-top:40px;}
+  .cd-unit{flex:1;max-width:90px;}
+  .cd-unit + .cd-unit{border-left:1px solid var(--line);}
+  .cd-num{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,11vw,48px);color:var(--ink);line-height:1;display:block;}
+  .cd-lbl{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--clay-deep);margin-top:10px;display:block;}
 
-    /* Presentes */
-    .presentes { text-align: center; }
-    .presentes p { margin-bottom: 26px; }
+  /* ───────── MANUAL DO CONVIDADO (quadrado) ───────── */
+  #manual{padding:58px 0;}
+  .manual-square{
+    position:relative;width:min(92%,460px);margin:34px auto 0;aspect-ratio:1/1;
+    background-color:var(--paper-2);
+    border:1px solid var(--line);border-radius:3px;
+    box-shadow:0 24px 48px -36px rgba(51,65,77,.5);
+    display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;
+    padding:clamp(16px,4.5vw,26px) clamp(12px,3.6vw,22px);
+    text-align:left;
+  }
+  .manual-square .mitem{display:flex;align-items:center;gap:clamp(8px,2.4vw,12px);padding:4px 4px;min-width:0;}
+  .manual-square .mi{flex:0 0 auto;color:var(--clay);display:flex;align-items:center;justify-content:center;}
+  .manual-square .mi svg{width:clamp(21px,5.6vw,27px);height:clamp(21px,5.6vw,27px);}
+  .manual-square .mt{font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(11.5px,3.2vw,14.5px);color:var(--ink);line-height:1.25;min-width:0;}
+  @media(min-width:520px){.manual-square{column-gap:20px;}}
 
-    /* Rodapé */
-    footer {
-      background: var(--azul);
-      color: var(--branco);
-      text-align: center;
-      padding: 56px 20px 40px;
-    }
-    footer img { width: 110px; margin: 0 auto 16px; }
-    footer .script { font-size: 2.2rem; }
-    footer small { display: block; margin-top: 6px; letter-spacing: .3em; font-size: .75rem; }
+  /* ───────── DRESS CODE ───────── */
+  #dress{padding:58px 0;text-align:center;}
+  .dress-icon{width:34px;height:34px;margin:26px auto 0;color:var(--clay);}
+  .dress-main{font-family:'Bodoni Moda',serif;font-style:italic;font-size:26px;color:var(--ink);margin-top:20px;}
+  .dress-note{font-size:13.5px;line-height:1.8;color:var(--ink-soft);max-width:380px;margin:14px auto 0;}
 
-    /* Animação de entrada */
-    .surgir { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
-    .surgir.visivel { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .surgir { opacity: 1; transform: none; transition: none; }
-      .rolar::after { animation: none; }
-      html { scroll-behavior: auto; }
-    }
-  </style>
+  /* ───────── GIFTS / RSVP ───────── */
+  #gifts,#rsvp{padding:58px 0;text-align:center;}
+  #rsvp{padding-bottom:44px;}
+  .gift-note,.rsvp-note{font-size:13.5px;line-height:1.85;color:var(--ink-soft);max-width:400px;margin:26px auto 0;}
+  .btn-fill{
+    display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper);
+    background:var(--clay-deep);padding:15px 30px;text-decoration:none;text-indent:.26em;
+    transition:.35s;border:1px solid var(--clay-deep);cursor:pointer;
+  }
+  .btn-fill:hover{background:transparent;color:var(--clay-deep);}
+  .btn-fill svg{width:14px;height:14px;}
+  .btn-soon{
+    display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--sand-deep);
+    background:var(--paper-2);padding:15px 30px;text-indent:.26em;border:1px solid var(--line);cursor:default;
+  }
+
+  /* RSVP — busca por nome */
+  #rsvp .rsvp-form{margin-top:30px;display:flex;flex-direction:column;align-items:center;}
+  #rsvp .rsvp-input{
+    width:100%;max-width:340px;text-align:center;
+    font-family:'Jost',sans-serif;font-weight:300;font-size:15px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--clay-soft);border-radius:2px;
+    padding:15px 18px;letter-spacing:.02em;outline:none;transition:.3s;
+  }
+  #rsvp .rsvp-input:focus{border-color:var(--clay);box-shadow:0 0 0 3px rgba(74,137,179,.08);}
+  #rsvp .rsvp-input::placeholder{color:var(--sand-deep);}
+  #rsvp .rsvp-msg{font-size:13.5px;line-height:1.8;color:var(--ink-soft);max-width:380px;margin:0 auto;}
+  #rsvp .rsvp-msg b{color:var(--clay-deep);font-weight:500;}
+  #rsvp .rsvp-ok{margin-top:8px;display:flex;flex-direction:column;align-items:center;}
+  #rsvp .ok-check{color:var(--clay);margin-bottom:6px;}
+  #rsvp .ok-check svg{width:40px;height:40px;}
+  #rsvp .ok-name{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;color:var(--ink);line-height:1.1;}
+  #rsvp .ok-grupo{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay-deep);margin-top:7px;text-indent:.22em;}
+  #rsvp .rsvp-ok .rsvp-msg{margin-top:16px;}
+  #rsvp .rsvp-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px;}
+  #rsvp .rsvp-chip{
+    font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);background:var(--paper-2);
+    border:1px solid var(--line);padding:11px 18px;border-radius:30px;cursor:pointer;transition:.25s;line-height:1.2;
+  }
+  #rsvp .rsvp-chip span{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-deep);margin-top:3px;}
+  #rsvp .rsvp-chip:hover{border-color:var(--clay);background:var(--paper);}
+  #rsvp .rsvp-again{
+    margin-top:18px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--sand-deep);background:none;border:none;cursor:pointer;text-indent:.16em;
+  }
+  #rsvp .rsvp-again:hover{color:var(--clay-deep);}
+  .btn-wa{background:#2e7d52;border-color:#2e7d52;color:#fff;}
+  .btn-wa:hover{background:transparent;color:#2e7d52;}
+  .btn-wa svg{width:17px;height:17px;}
+
+
+  /* ───────── MUSIC ───────── */
+  #music{padding:30px 0 8px;text-align:center;}
+  .music-row{display:inline-flex;align-items:center;gap:12px;color:var(--sand-deep);font-size:11px;letter-spacing:.32em;text-transform:uppercase;}
+  .music-row .bars{display:inline-flex;align-items:flex-end;gap:2px;height:14px;}
+  .music-row .bars i{width:2px;background:var(--clay);animation:eq 1s ease-in-out infinite;}
+  .music-row .bars i:nth-child(2){animation-delay:.2s}.music-row .bars i:nth-child(3){animation-delay:.4s}.music-row .bars i:nth-child(4){animation-delay:.1s}
+  #musicToggle{
+    position:fixed;right:16px;bottom:16px;z-index:900;
+    display:none;align-items:center;gap:9px;cursor:pointer;
+    background:var(--paper);border:1px solid var(--clay);color:var(--clay-deep);
+    border-radius:40px;padding:9px 16px 9px 13px;
+    box-shadow:0 8px 24px rgba(47,97,137,.22);transition:.3s;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;
+  }
+  #musicToggle:hover{background:var(--clay);color:#fff;border-color:var(--clay);}
+  #musicToggle svg{width:14px;height:14px;flex-shrink:0;}
+  #musicToggle .mt-label{white-space:nowrap;text-indent:.2em;}
+
+  /* ───────── FOOTER ───────── */
+  footer{padding:60px 30px 40px;text-align:center;}
+  .footer-mono{--mc:var(--sand-deep);margin:0 auto 20px;font-size:26px;}
+  .footer-mono .mono-sprig{width:28px;}
+  .footer-names{font-family:'Bodoni Moda',serif;font-size:30px;color:var(--ink);line-height:1;}
+  .footer-names .amp{font-style:italic;color:var(--clay);}
+  .footer-date{margin-top:14px;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--clay-deep);text-indent:.4em;}
+  .footer-note{margin-top:18px;font-size:11px;letter-spacing:.04em;color:var(--sand-deep);font-style:italic;font-family:'Bodoni Moda',serif;}
+
+  /* ───────── REVEAL ───────── */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s cubic-bezier(.2,.6,.2,1),transform 1s cubic-bezier(.2,.6,.2,1);}
+  .reveal.visible{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes pulse{0%,100%{opacity:0}50%{opacity:.9}}
+  @keyframes fall{0%{opacity:0;transform:translateY(0) rotate(0)}10%{opacity:.7}100%{opacity:0;transform:translateY(108vh) rotate(360deg)}}
+  @keyframes eq{0%,100%{height:4px}50%{height:14px}}
+
+  @media(max-width:380px){.inner{padding:0 24px}.qf .v{font-size:17px}}
+  @media(min-width:760px){.hero-photo img{object-position:50% 40%;}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 
-  <!-- Capa -->
-  <header class="capa">
-    <img class="monograma" src="assets/monograma.svg" alt="Monograma H &amp; J">
-    <p class="convite">Convidamos você para o nosso casamento</p>
-    <h1>Henrique &amp; Julia</h1>
-    <p class="data">03<span>·</span>02<span>·</span>2027</p>
-    <p class="hora">Às 16h · Salvador - BA</p>
-    <a class="rolar" href="#nos" aria-label="Rolar para baixo"></a>
-  </header>
+<!-- ════════ SPLASH ════════ -->
+<div id="splash">
+  <div id="leaves"></div>
+  <div class="splash-inner">
+    <div class="monoimg splash-monoimg" role="img" aria-label="Henrique & Julia"></div>
+    <p class="splash-date" id="splashDate"></p>
+  </div>
+  <p class="splash-hint">toque para abrir</p>
+</div>
 
-  <!-- Casal + contagem -->
-  <section id="nos" class="fundo-branco">
-    <div class="container">
-      <div class="foto-casal">
-        <figure class="surgir">
-          <img src="assets/casal.jpg" alt="Henrique e Julia">
-        </figure>
-        <div class="texto surgir">
-          <p class="script">Vamos nos casar!</p>
-          <p>Com muita alegria, convidamos você para celebrar conosco o dia em que uniremos nossas vidas diante de Deus.</p>
-          <p class="serif" style="font-size:1.35rem; color:var(--grafite);">
-            Quarta-feira, 03 de fevereiro de 2027<br>às 16 horas
-          </p>
-        </div>
-      </div>
+<!-- ════════ MAIN ════════ -->
+<div id="main">
+ <div class="wrap">
 
-      <div class="titulo surgir" style="margin-top:64px;">
-        <small>Contagem regressiva</small>
-        <h2>Falta pouco!</h2>
-        <span class="ramo"></span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="midia/casal.jpg" alt="Henrique e Julia">
+    </div>
+    <div class="hero-cap">
+      <h1 class="hero-names" id="heroNames" aria-label="Henrique & Julia"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+    </div>
+  </section>
+
+  <!-- VERSE -->
+  <section id="verse">
+    <div class="inner">
+      <p class="verse-q reveal" id="verseText"></p>
+      <p class="verse-ref reveal d1" id="verseRef"></p>
+    </div>
+  </section>
+
+  <!-- BÊNÇÃO / PAIS -->
+  <section id="bencao">
+    <div class="inner">
+      <p class="sec-label reveal">o convite</p>
+      <h2 class="sec-title reveal">Com a bênção de <span class="it">Deus</span></h2>
+      <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+      <p class="rsvp-note reveal d1" style="margin-top:30px">e de suas famílias, com alegria convidam você para a celebração do seu casamento.</p>
+      <div id="paisNoivaBlock" class="parents-block reveal d1" style="margin-top:36px;display:none">
+        <p class="parents-k">os pais da noiva</p>
+        <p class="parents-v" id="paisNoiva"></p>
       </div>
-      <div class="contagem surgir" id="contagem" aria-live="polite">
-        <div><strong id="dias">--</strong><span>Dias</span></div>
-        <div><strong id="horas">--</strong><span>Horas</span></div>
-        <div><strong id="minutos">--</strong><span>Min</span></div>
-        <div><strong id="segundos">--</strong><span>Seg</span></div>
+      <div id="paisDivider" class="place-divider reveal" style="margin:34px auto;display:none"></div>
+      <div id="paisNoivoBlock" class="parents-block reveal d1" style="display:none">
+        <p class="parents-k">os pais do noivo</p>
+        <p class="parents-v" id="paisNoivo"></p>
       </div>
     </div>
   </section>
 
-  <!-- Versículo -->
-  <section class="versiculo">
-    <div class="container surgir">
-      <blockquote>“Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe.”</blockquote>
-      <cite>Mateus 19:6</cite>
-    </div>
-  </section>
+  <!-- DAY / LOCATIONS -->
+  <section id="day">
+    <div class="inner">
+      <p class="sec-label reveal">o grande dia</p>
+      <h2 class="sec-title reveal">Celebrem <span class="it">conosco</span></h2>
+      <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
 
-  <!-- Locais -->
-  <section id="locais">
-    <div class="container">
-      <div class="titulo surgir">
-        <small>Onde e quando</small>
-        <h2>Cerimônia &amp; Recepção</h2>
-        <span class="ramo"></span>
+      <div class="quickfacts reveal d1">
+        <div class="qf"><p class="k">Data</p><p class="v" id="qfData">03 de Fevereiro<small>2027</small></p></div>
+        <div class="qf"><p class="k">Local</p><p class="v">Salvador<small>Bahia</small></p></div>
       </div>
-      <div class="locais">
-        <article class="card surgir">
-          <div class="icone" aria-hidden="true">⛪</div>
-          <h3>Cerimônia</h3>
-          <p class="local">03/02/2027 · 16h</p>
-          <address>Rua Germano D'Anunciação, S/N°<br>Sete de Abril, Salvador - BA<br>41301-110</address>
-          <a class="botao" href="https://maps.app.goo.gl/nTDyS4JhLa5QTSps7?g_st=iw" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+
+      <!-- Cerimônia -->
+      <div class="place reveal">
+        <div class="place-art"><img src="midia/maos.jpg" alt="Mãos de Henrique e Julia"></div>
+        <div class="place-body">
+          <span class="place-tag">Cerimônia</span>
+          <p class="place-time">às 16h</p>
+          <p class="place-name">Cerimônia religiosa</p>
+          <p class="place-addr">Rua Germano D'Anunciação, S/N° — Sete de Abril<br>Salvador — BA, 41301-110</p>
+          <a class="btn-line" id="mapCerimonia" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.3"/></svg>
             Ver no mapa
           </a>
-        </article>
-        <article class="card surgir">
-          <div class="icone" aria-hidden="true">🥂</div>
-          <h3>Recepção</h3>
-          <p class="local">Casarão Music</p>
-          <address>Av. Aliomar Baleeiro, km 36<br>Sete de Abril, Salvador - BA<br>41301-110</address>
-          <a class="botao" href="https://maps.app.goo.gl/wekBpJj1xjTjXALk6?g_st=iw" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        </div>
+      </div>
+
+      <div class="place-divider reveal"></div>
+
+      <!-- Recepção -->
+      <div class="place reveal">
+        <div class="place-body">
+          <span class="place-tag" style="background:var(--sand-deep)">Recepção</span>
+          <p class="place-time" style="color:var(--sand-deep)">logo após</p>
+          <p class="place-name">Casarão Music</p>
+          <p class="place-addr">Av. Aliomar Baleeiro, km 36 — Sete de Abril<br>Salvador — BA, 41301-110</p>
+          <a class="btn-line" id="mapRecepcao" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.3"/></svg>
             Ver no mapa
           </a>
-        </article>
-      </div>
-      <div class="acoes surgir">
-        <a class="botao contorno" href="#" id="agenda">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-          Salvar na agenda
-        </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Traje -->
-  <section id="traje" class="fundo-branco">
-    <div class="container traje">
-      <div class="titulo surgir">
-        <small>Dress code</small>
-        <h2>Traje</h2>
-        <span class="ramo"></span>
+  <!-- COUNTDOWN -->
+  <section id="countdown">
+    <div class="inner">
+      <p class="sec-label reveal">a contagem começou</p>
+      <h2 class="sec-title reveal">Falta <span class="it">pouco</span></h2>
+      <div class="cd-wrap reveal d1">
+        <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-lbl">dias</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-lbl">horas</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-lbl">min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">seg</span></div>
       </div>
-      <p class="surgir">Pedimos atenção às vestimentas por se tratar de uma cerimônia religiosa.<br>Solicitamos, gentilmente, que sejam evitados:</p>
-      <div class="cores">
-        <div class="cor surgir">
-          <div class="amostra" style="background:#ffffff;"></div>
-          <strong>🤍 Branco</strong>
-          <span>Reservado à noiva.</span>
-        </div>
-        <div class="cor surgir">
-          <div class="amostra" style="background:linear-gradient(135deg,#bfe0f3 0%,#5da7d2 50%,#1f4e79 100%);"></div>
-          <strong>🩵 Tons de azul</strong>
-          <span>Reservados às madrinhas, padrinhos e daminhas.</span>
-        </div>
-      </div>
-      <p class="obrigado-traje surgir">Agradecemos o carinho e a compreensão de todos!</p>
     </div>
   </section>
 
-  <!-- Manual dos convidados -->
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="inner">
+      <div class="music-row" id="musicRow" style="display:none">
+        <span class="bars"><i></i><i></i><i></i><i></i></span>
+        <span id="musicTxt">tocando agora</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANUAL DO CONVIDADO -->
   <section id="manual">
-    <div class="container">
-      <div class="titulo surgir">
-        <small>Orientações</small>
-        <h2>Manual dos Convidados</h2>
-        <span class="ramo"></span>
-      </div>
-      <div class="manual-intro surgir">
-        <p class="serif" style="font-size:1.4rem; color:var(--grafite);">Sejam muito bem-vindos ao nosso grande dia!</p>
-        <p>Preparamos este pequeno manual com algumas orientações para que todos possam aproveitar esse momento tão especial conosco.</p>
-      </div>
-
-      <div class="itens">
-        <details class="surgir" open>
-          <summary><span class="emoji" aria-hidden="true">⛪</span>Cerimônia</summary>
-          <div class="conteudo">
-            <p>Nossa cerimônia será realizada na igreja.</p>
-            <p>Pedimos, por favor, que cheguem com antecedência e mantenham o respeito e o silêncio durante a celebração.</p>
-          </div>
-        </details>
-        <details class="surgir">
-          <summary><span class="emoji" aria-hidden="true">👗</span>Dress code</summary>
-          <div class="conteudo">
-            <p>Para deixar nosso dia ainda mais harmonioso, pedimos atenção às vestimentas:</p>
-            <ul>
-              <li>• <strong>Branco:</strong> reservado à noiva.</li>
-              <li>• <strong>Tons de azul:</strong> reservados para a composição escolhida pelas madrinhas, padrinhos e daminhas.</li>
-              <li>• Evite também roupas muito informais ou inadequadas ao ambiente da igreja.</li>
-            </ul>
-          </div>
-        </details>
-        <details class="surgir">
-          <summary><span class="emoji" aria-hidden="true">⏰</span>Horário</summary>
-          <div class="conteudo">
-            <p>Pedimos que cheguem com antecedência para que todos estejam acomodados antes do início da cerimônia.</p>
-          </div>
-        </details>
-        <details class="surgir">
-          <summary><span class="emoji" aria-hidden="true">📸</span>Durante a cerimônia</summary>
-          <div class="conteudo">
-            <p>Sintam-se à vontade para registrar nosso dia, mas pedimos que evitem ficar no corredor ou à frente dos fotógrafos e cinegrafistas.</p>
-          </div>
-        </details>
-        <details class="surgir">
-          <summary><span class="emoji" aria-hidden="true">💕</span>Confirmação de presença</summary>
-          <div class="conteudo">
-            <p>A confirmação de presença é muito importante para a organização do nosso casamento.</p>
-            <p>Por favor, confirme sua presença dentro do prazo informado no convite.</p>
-          </div>
-        </details>
-        <details class="surgir">
-          <summary><span class="emoji" aria-hidden="true">🎁</span>Presentes</summary>
-          <div class="conteudo">
-            <p>Sua presença já é um presente para nós!</p>
-            <p>Caso queira nos presentear, fique à vontade para escolher algo de sua preferência.</p>
-          </div>
-        </details>
-        <details class="surgir">
-          <summary><span class="emoji" aria-hidden="true">🥂</span>Recepção</summary>
-          <div class="conteudo">
-            <p>Depois da cerimônia, queremos celebrar esse momento ao lado de vocês!</p>
-            <p>Aproveitem, dancem, brindem e, acima de tudo, divirtam-se conosco.</p>
-          </div>
-        </details>
-      </div>
-
-      <div class="assinatura surgir">
-        <p>Obrigado por fazer parte da nossa história e por celebrar esse momento tão importante ao nosso lado.</p>
-        <p>Com carinho,</p>
-        <p class="script">Henrique e Julia 🤍</p>
-      </div>
+    <div class="inner">
+      <p class="sec-label reveal">para tornar o dia perfeito</p>
+      <h2 class="sec-title reveal">Manual do <span class="it">Convidado</span></h2>
+      <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+      <p class="rsvp-note reveal d1" style="margin-top:30px">Sejam muito bem-vindos ao nosso grande dia! Preparamos este pequeno manual com algumas orientações para que todos possam aproveitar esse momento tão especial conosco.</p>
+      <div class="manual-square reveal d1" id="manualList"></div>
+      <p class="rsvp-note reveal d1" style="margin-top:34px">Obrigado por fazer parte da nossa história e por celebrar esse momento tão importante ao nosso lado.</p>
+      <p class="dress-main reveal d2" style="font-size:22px;margin-top:14px">Com carinho, Henrique e Julia 🤍</p>
     </div>
   </section>
 
-  <!-- Lista de presentes -->
-  <section id="presentes" class="fundo-branco">
-    <div class="container presentes">
-      <div class="titulo surgir">
-        <small>Com carinho</small>
-        <h2>Lista de Presentes</h2>
-        <span class="ramo"></span>
-      </div>
-      <p class="surgir">Sua presença já é um presente para nós! Caso queira nos presentear, preparamos uma lista com algumas sugestões.</p>
-      <a class="botao surgir" href="https://app.mywishlist.co/juliacruz-csss/casamento" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8S10.5 3 7.5 4 9 8 12 8zM12 8s1.5-5 4.5-4S15 8 12 8z"/></svg>
-        Ver lista de presentes
-      </a>
+  <!-- DRESS CODE -->
+  <section id="dress">
+    <div class="inner">
+      <p class="sec-label reveal">traje</p>
+      <h2 class="sec-title reveal">Dress <span class="it">code</span></h2>
+      <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+      <svg class="dress-icon reveal d1" viewBox="0 0 48 48" fill="none"><path d="M24 12a3 3 0 100-6 3 3 0 000 6zm0 0v3l-13 9c-2 1.4-1 4 1.4 4h23.2c2.4 0 3.4-2.6 1.4-4l-13-9" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M7 32h34" stroke="currentColor" stroke-width="1.3"/></svg>
+      <p class="dress-main reveal d1">Cerimônia religiosa</p>
+      <p class="dress-note reveal d2">Pedimos atenção às vestimentas por se tratar de uma cerimônia religiosa. Solicitamos, gentilmente, que sejam evitados:</p>
+      <p class="dress-note reveal d2">🤍 <strong style="color:var(--ink);font-weight:400">Branco</strong>: reservado à noiva.<br>🩵 <strong style="color:var(--ink);font-weight:400">Tons de azul</strong>: reservados às madrinhas, padrinhos e daminhas.</p>
+      <p class="dress-note reveal d2">Evitem também roupas muito informais ou inadequadas ao ambiente da igreja.</p>
+      <p class="dress-note reveal d2" style="font-family:'Bodoni Moda',serif;font-style:italic;color:var(--clay)">Agradecemos o carinho e a compreensão de todos!</p>
     </div>
   </section>
 
+  <!-- GIFTS -->
+  <section id="gifts">
+    <div class="inner">
+      <p class="sec-label reveal">presentes</p>
+      <h2 class="sec-title reveal">Sua presença é o <span class="it">presente</span></h2>
+      <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+      <p class="gift-note reveal d1">Sua presença já é um presente para nós! Caso queira nos presentear, fique à vontade para escolher algo de sua preferência — preparamos uma lista com muito carinho.</p>
+      <div class="reveal d2" id="giftAction"></div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <div class="inner">
+      <p class="sec-label reveal">confirmação de presença</p>
+      <h2 class="sec-title reveal">Você <span class="it">vem?</span></h2>
+      <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+      <p class="rsvp-note reveal d1" id="rsvpNote">A confirmação de presença é muito importante para a organização do nosso casamento. Por favor, confirme sua presença dentro do prazo informado no convite.</p>
+      <p class="rsvp-note reveal d1" id="rsvpDuvida" style="margin-top:22px;display:none">Qualquer dúvida, fale com os noivos.</p>
+      <div class="reveal d2" id="rsvpAction"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <img src="assets/monograma.svg" alt="">
-    <p class="script">Henrique &amp; Julia</p>
-    <small>03 · 02 · 2027</small>
+    <div class="monoimg footer-monoimg" role="img" aria-label="Henrique & Julia"></div>
+    <p class="footer-date" id="footerDate"></p>
+    <p class="footer-note">"...o que Deus uniu, ninguém separe." · Mateus 19:6</p>
   </footer>
 
-  <script>
-    // Contagem regressiva — 03/02/2027 às 16h (horário de Salvador, UTC-3)
-    var alvo = new Date("2027-02-03T16:00:00-03:00").getTime();
-    function dois(n) { return n < 10 ? "0" + n : String(n); }
-    function atualizar() {
-      var resto = Math.max(0, alvo - Date.now());
-      var s = Math.floor(resto / 1000);
-      document.getElementById("dias").textContent = Math.floor(s / 86400);
-      document.getElementById("horas").textContent = dois(Math.floor(s % 86400 / 3600));
-      document.getElementById("minutos").textContent = dois(Math.floor(s % 3600 / 60));
-      document.getElementById("segundos").textContent = dois(s % 60);
-    }
-    atualizar();
-    setInterval(atualizar, 1000);
+ </div><!-- /.wrap -->
+</div><!-- /#main -->
 
-    // Salvar na agenda (Google Agenda)
-    document.getElementById("agenda").href =
-      "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-      "&text=" + encodeURIComponent("Casamento Henrique & Julia") +
-      "&dates=20270203T190000Z/20270204T030000Z" +
-      "&details=" + encodeURIComponent("Cerimônia às 16h. Recepção no Casarão Music.\nLista de presentes: https://app.mywishlist.co/juliacruz-csss/casamento") +
-      "&location=" + encodeURIComponent("Rua Germano D'Anunciação, S/N° - Sete de Abril, Salvador - BA, 41301-110");
-    document.getElementById("agenda").target = "_blank";
-    document.getElementById("agenda").rel = "noopener";
+<!-- audio (música) -->
+<audio id="audio" loop preload="none"></audio>
 
-    // Animação ao rolar
-    var els = document.querySelectorAll(".surgir");
-    if ("IntersectionObserver" in window) {
-      var obs = new IntersectionObserver(function (entradas) {
-        entradas.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add("visivel"); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.12 });
-      els.forEach(function (el) { obs.observe(el); });
-    } else {
-      els.forEach(function (el) { el.classList.add("visivel"); });
+<!-- floating music control -->
+<div id="musicToggle" title="Nossa música">
+  <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+  <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  <span class="mt-label">Nossa música</span>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   ⚙️  CONFIGURAÇÃO — edite somente este bloco
+   ════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  noivos:    'Henrique & Julia',
+  cidade:    'Salvador · Bahia',
+
+  dataEvento:'2027-02-03T16:00:00-03:00',    // contagem regressiva (horário de Salvador)
+  dataTexto: '03 de Fevereiro de 2027',
+
+  // música (opcional): coloque o arquivo "musica.mp3" na mesma pasta e escreva 'musica.mp3' aqui
+  musica: '',
+
+  // mapas
+  mapCerimonia: 'https://maps.app.goo.gl/nTDyS4JhLa5QTSps7?g_st=iw',
+  mapRecepcao:  'https://maps.app.goo.gl/wekBpJj1xjTjXALk6?g_st=iw',
+
+  // versículo
+  versiculo:    'Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe.',
+  versiculoRef: 'Mateus 19:6',
+
+  // pais (opcional) — deixe '' para ocultar
+  paisNoiva: '',   // ex: 'Fulano da Silva<br>Fulana da Silva'
+  paisNoivo: '',
+
+  // lista de presentes
+  presentesLink: 'https://app.mywishlist.co/juliacruz-csss/casamento',
+
+  // ✅ Link de CONFIRMAÇÃO DE PRESENÇA (opcional) — preencha e o botão aparece
+  rsvpLink: '',
+
+  // 📱 WhatsApp dos NOIVOS (opcional, apenas dígitos: 55 + DDD + número) — preencha e o botão aparece
+  whatsappNoivos: ''
+};
+
+/* ════════════════════════════════════════════════════════════
+   A partir daqui é o funcionamento — não precisa mexer.
+   ════════════════════════════════════════════════════════════ */
+function txt(id,v){const e=document.getElementById(id);if(e)e.innerHTML=v;}
+function namesHTML(s){
+  const p=s.split(/\s*&\s*/);
+  return p.length===2 ? p[0]+'<span class="amp">&amp;</span>'+p[1] : s;
+}
+txt('splashNames',namesHTML(CONFIG.noivos));
+txt('heroNames',namesHTML(CONFIG.noivos));
+txt('footerNames',CONFIG.noivos.replace(/&/,'<span class="amp">&amp;</span>'));
+txt('splashDate',CONFIG.dataTexto.replace(/ de /g,' · '));
+txt('heroSub',CONFIG.cidade);
+txt('footerDate',CONFIG.dataTexto);
+txt('verseText','"'+CONFIG.versiculo+'"');
+txt('verseRef',CONFIG.versiculoRef);
+document.getElementById('mapCerimonia').href=CONFIG.mapCerimonia;
+document.getElementById('mapRecepcao').href=CONFIG.mapRecepcao;
+document.title=CONFIG.noivos+' — Casamento';
+
+/* pais (opcional) */
+if(CONFIG.paisNoiva){txt('paisNoiva',CONFIG.paisNoiva);document.getElementById('paisNoivaBlock').style.display='block';}
+if(CONFIG.paisNoivo){txt('paisNoivo',CONFIG.paisNoivo);document.getElementById('paisNoivoBlock').style.display='block';}
+if(CONFIG.paisNoiva&&CONFIG.paisNoivo){document.getElementById('paisDivider').style.display='block';}
+
+/* ─── Manual do Convidado ─── */
+const ICONS = {
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M7.8 12.4l2.6 2.6L16.2 9"/></svg>',
+  church:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3M10.5 3.5h3"/><path d="M12 5 8 8v3M12 5l4 3v3"/><path d="M5 21V11l7-3.5L19 11v10"/><path d="M9.6 21v-3.6a2.4 2.4 0 0 1 4.8 0V21"/><path d="M3 21h18"/></svg>',
+  dress:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3l2 2.4L14 3"/><path d="M10 3c-.5 1.6-.4 3 .9 4.4M14 3c.5 1.6.4 3-.9 4.4"/><path d="M10.9 7.4C10.2 9.6 8.2 15 7.2 19.7c3 1.4 6.6 1.4 9.6 0C15.8 15 13.8 9.6 13.1 7.4"/></svg>',
+  sparkle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="12" cy="12" r="1.1"/><path d="M12 3.6v3M12 17.4v3M3.6 12h3M17.4 12h3M6.2 6.2l2.1 2.1M15.7 15.7l2.1 2.1M17.8 6.2l-2.1 2.1M8.3 15.7l-2.1 2.1"/></svg>',
+  cake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2.4"/><rect x="9" y="5.8" width="6" height="3.6" rx="1"/><rect x="6.4" y="10.4" width="11.2" height="4.4" rx="1"/><path d="M12 14.8V18M8.4 18h7.2"/><path d="M5 21h14"/></svg>',
+  vase:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11V5.4"/><circle cx="12" cy="4.4" r="1.4"/><path d="M12 8.4c-1.9-.4-3-1.9-3-3.6M12 8.4c1.9-.4 3-1.9 3-3.6"/><path d="M8.6 12.6h6.8l-1 7.4H9.6z"/></svg>',
+  envelope:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="1.6"/><path d="M3.8 7.2 12 12.8l8.2-5.6"/><path d="M12 16.6c1.3-1 2.1-1.8 2.1-2.8a1.05 1.05 0 0 0-2.1-.4 1.05 1.05 0 0 0-2.1.4c0 1 .8 1.8 2.1 2.8z"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.2" r="6.8"/><path d="M12 9.6v3.6l2.4 1.4"/><path d="M4.6 5.4 7 7.6M19.4 5.4 17 7.6"/><path d="M8.6 19.6 7.2 21M15.4 19.6 16.8 21"/></svg>',
+  camera:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.4-2h7.2L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.1"/></svg>',
+  couple:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.4" cy="6.6" r="2"/><path d="M5 20v-4.6a3.4 3.4 0 0 1 6.8 0V20"/><circle cx="15.6" cy="6.6" r="2"/><path d="M12.2 20v-4.6a3.4 3.4 0 0 1 6.8 0V20"/></svg>'
+};
+const MANUAL = [
+  ['church','A cerimônia será na igreja'],
+  ['clock','Chegue com antecedência'],
+  ['sparkle','Respeito e silêncio na celebração'],
+  ['dress','Branco é a cor da noiva'],
+  ['dress','Azul é das madrinhas, padrinhos e daminhas'],
+  ['camera','Não fique à frente dos fotógrafos'],
+  ['check','Confirme sua presença'],
+  ['envelope','Sua presença já é um presente'],
+  ['cake','Aproveite, dance e brinde'],
+  ['couple','Divirta-se com os noivos']
+];
+(function(){
+  const box=document.getElementById('manualList');
+  MANUAL.forEach(([ic,t])=>{
+    const it=document.createElement('div');it.className='mitem';
+    it.innerHTML='<span class="mi">'+ICONS[ic]+'</span><span class="mt">'+t+'</span>';
+    box.appendChild(it);
+  });
+})();
+
+/* ─── Presentes (opcional) ─── */
+(function(){
+  const box=document.getElementById('giftAction');
+  const giftSvg='<svg viewBox="0 0 24 24" fill="none"><path d="M20 7H4v5h16V7zM12 7v14M12 7c-2-4-6-4-6-1.5C6 7 9 7 12 7zm0 0c2-4 6-4 6-1.5C18 7 15 7 12 7zM5 12v8a1 1 0 001 1h12a1 1 0 001-1v-8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>';
+  if(CONFIG.presentesLink){
+    box.innerHTML='<a class="btn-fill" href="'+CONFIG.presentesLink+'" target="_blank" rel="noopener">'+giftSvg+'Lista de presentes</a>';
+  }else{
+    box.innerHTML='<span class="btn-soon">Em breve</span>';
+  }
+})();
+
+/* ─── Confirmação de presença (botões aparecem quando configurados) ─── */
+(function(){
+  const box=document.getElementById('rsvpAction');
+  const okIcon='<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.5"/><path d="M8.3 12.2l2.5 2.5 4.9-5.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const waIcon='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.16l-.3-.18-3 .78.8-2.92-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.16c-.25-.13-1.48-.73-1.7-.81-.23-.09-.4-.13-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.13-.56-1.36-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.43 1.03 2.6.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.14-1.19-.06-.1-.23-.16-.48-.29Z"/></svg>';
+
+  const wa=(CONFIG.whatsappNoivos||'').replace(/\D/g,'');
+  const waMsg='Olá, Henrique e Julia! \uD83D\uDC8D Tenho uma dúvida sobre o casamento de vocês.';
+  let html='';
+  if(CONFIG.rsvpLink) html+='<a class="btn-fill" href="'+CONFIG.rsvpLink+'" target="_blank" rel="noopener">'+okIcon+'Confirmar presença</a>';
+  if(wa){
+    html+='<a class="btn-fill btn-wa" href="https://wa.me/'+wa+'?text='+encodeURIComponent(waMsg)+'" target="_blank" rel="noopener">'+waIcon+'Falar com os noivos</a>';
+    document.getElementById('rsvpDuvida').style.display='block';
+  }
+  if(html) box.innerHTML='<div class="rsvp-ok">'+html+'</div>';
+})();
+
+/* ─── MÚSICA ─── */
+const audio=document.getElementById('audio');
+const musicToggle=document.getElementById('musicToggle');
+if(CONFIG.musica) audio.src=CONFIG.musica; audio.volume=0.85;
+function setMusicIcon(p){document.getElementById('iconPlay').style.display=p?'none':'block';document.getElementById('iconPause').style.display=p?'block':'none';}
+audio.addEventListener('play',()=>{setMusicIcon(true);const r=document.getElementById('musicRow');if(r)r.style.display='inline-flex';musicToggle.style.display='flex';});
+audio.addEventListener('pause',()=>setMusicIcon(false));
+function tryPlay(){if(!CONFIG.musica)return;const pr=audio.play();if(pr&&pr.catch)pr.catch(()=>{});}
+function startMusic(){try{audio.currentTime=0;}catch(e){}tryPlay();}
+['touchend','click','keydown'].forEach(ev=>document.addEventListener(ev,function once(){if(audio.paused)tryPlay();},{once:true,passive:true}));
+
+/* ─── SPLASH: folhas caindo ─── */
+(function(){
+  const c=document.getElementById('leaves');
+  const cols=['#9DBFD6','#4A89B3','#6B8DA5','#2F6189','#B9D5E8'];
+  for(let i=0;i<22;i++){
+    const s=document.createElement('div');s.className='leaf-fall';
+    const sz=6+Math.random()*9;
+    s.style.cssText='width:'+sz+'px;height:'+(sz*1.5)+'px;left:'+(Math.random()*100)+'%;top:'+(-12-Math.random()*15)+'%;background:'+cols[i%cols.length]+';border-radius:0 80% 0 80%;transform:rotate('+(Math.random()*360)+'deg);animation-duration:'+(6+Math.random()*7)+'s;animation-delay:'+(Math.random()*6)+'s;opacity:.55;';
+    c.appendChild(s);
+  }
+})();
+
+/* ─── SPLASH dismiss ─── */
+document.getElementById('splash').addEventListener('click',function(){
+  startMusic();
+  this.classList.add('hide');
+  setTimeout(()=>{
+    this.style.display='none';
+    document.getElementById('main').classList.add('visible');
+    if(CONFIG.musica) musicToggle.style.display='flex';
+    initReveal(); startCountdown();
+  },950);
+});
+musicToggle.addEventListener('click',function(){if(audio.paused)tryPlay();else audio.pause();});
+
+/* ─── REVEAL ─── */
+function initReveal(){
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+/* ─── COUNTDOWN ─── */
+function startCountdown(){
+  const target=new Date(CONFIG.dataEvento);const pad=n=>String(n).padStart(2,'0');
+  function upd(){
+    const diff=target-new Date();
+    if(diff<=0){
+      document.querySelector('#countdown .cd-wrap').innerHTML='<p style="font-family:Bodoni Moda,serif;font-style:italic;font-size:26px;color:var(--clay);width:100%;text-align:center">É hoje! Que Deus abençoe este dia</p>';
+      return;
     }
-  </script>
+    document.getElementById('cd-d').textContent=pad(Math.floor(diff/864e5));
+    document.getElementById('cd-h').textContent=pad(Math.floor(diff%864e5/36e5));
+    document.getElementById('cd-m').textContent=pad(Math.floor(diff%36e5/6e4));
+    document.getElementById('cd-s').textContent=pad(Math.floor(diff%6e4/1e3));
+  }
+  upd();setInterval(upd,1000);
+}
+</script>
 </body>
 </html>
