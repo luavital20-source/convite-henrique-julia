@@ -476,6 +476,7 @@
 
 <!-- audio (música) -->
 <audio id="audio" loop preload="none"></audio>
+<div id="ytWrap" style="position:fixed;left:-9999px;top:0;width:200px;height:200px;overflow:hidden" aria-hidden="true"><div id="ytPlayer"></div></div>
 
 <!-- floating music control -->
 <div id="musicToggle" title="Nossa música">
@@ -495,8 +496,9 @@ const CONFIG = {
   dataEvento:'2027-02-03T16:00:00-03:00',    // contagem regressiva (horário de Salvador)
   dataTexto: '03 de Fevereiro de 2027',
 
-  // música (opcional): coloque o arquivo "musica.mp3" na mesma pasta e escreva 'musica.mp3' aqui
-  musica: '',
+  // música: toca sozinha assim que o convidado toca em "toque para abrir"
+  musicaYoutube: 'WO_SNjtBK9A',   // código do vídeo do YouTube (youtu.be/WO_SNjtBK9A)
+  musica: '',                     // alternativa: arquivo "musica.mp3" na mesma pasta (tem prioridade)
 
   // mapas
   mapCerimonia: 'https://maps.app.goo.gl/nTDyS4JhLa5QTSps7?g_st=iw',
@@ -610,13 +612,42 @@ const MANUAL = [
 /* ─── MÚSICA ─── */
 const audio=document.getElementById('audio');
 const musicToggle=document.getElementById('musicToggle');
-if(CONFIG.musica) audio.src=CONFIG.musica; audio.volume=0.85;
+let tocando=false, yt=null, ytPronto=false, querTocar=false;
 function setMusicIcon(p){document.getElementById('iconPlay').style.display=p?'none':'block';document.getElementById('iconPause').style.display=p?'block':'none';}
-audio.addEventListener('play',()=>{setMusicIcon(true);const r=document.getElementById('musicRow');if(r)r.style.display='inline-flex';musicToggle.style.display='flex';});
-audio.addEventListener('pause',()=>setMusicIcon(false));
-function tryPlay(){if(!CONFIG.musica)return;const pr=audio.play();if(pr&&pr.catch)pr.catch(()=>{});}
-function startMusic(){try{audio.currentTime=0;}catch(e){}tryPlay();}
-['touchend','click','keydown'].forEach(ev=>document.addEventListener(ev,function once(){if(audio.paused)tryPlay();},{once:true,passive:true}));
+function onPlay(){tocando=true;setMusicIcon(true);const r=document.getElementById('musicRow');if(r)r.style.display='inline-flex';}
+function onPause(){tocando=false;setMusicIcon(false);}
+
+if(CONFIG.musica){
+  audio.src=CONFIG.musica; audio.volume=0.85;
+  audio.addEventListener('play',onPlay);
+  audio.addEventListener('pause',onPause);
+}else if(CONFIG.musicaYoutube){
+  /* player do YouTube escondido, já carregado para tocar no primeiro toque */
+  window.onYouTubeIframeAPIReady=function(){
+    yt=new YT.Player('ytPlayer',{
+      width:200,height:200,videoId:CONFIG.musicaYoutube,
+      playerVars:{autoplay:0,controls:0,loop:1,playlist:CONFIG.musicaYoutube,playsinline:1,rel:0},
+      events:{
+        onReady:function(){ytPronto=true;yt.setVolume(85);if(document.getElementById('main').classList.contains('visible'))musicToggle.style.display='flex';if(querTocar)tryPlay();},
+        onStateChange:function(e){if(e.data===YT.PlayerState.PLAYING)onPlay();else if(e.data===YT.PlayerState.PAUSED||e.data===YT.PlayerState.ENDED)onPause();},
+        onError:function(){musicToggle.style.display='none';}
+      }
+    });
+  };
+  const tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
+}
+
+function tryPlay(){
+  if(CONFIG.musica){const pr=audio.play();if(pr&&pr.catch)pr.catch(()=>{});return;}
+  if(!CONFIG.musicaYoutube)return;
+  querTocar=true;
+  if(ytPronto){yt.unMute();yt.playVideo();}
+}
+function pauseMusic(){querTocar=false;if(CONFIG.musica)audio.pause();else if(ytPronto)yt.pauseVideo();}
+function startMusic(){tryPlay();}
+/* tenta tocar ao abrir a página; navegadores só liberam o som após o primeiro toque, por isso também toca ao tocar em qualquer lugar */
+tryPlay();
+['touchend','click','keydown'].forEach(ev=>document.addEventListener(ev,function once(){if(!tocando)tryPlay();},{once:true,passive:true}));
 
 /* ─── SPLASH: folhas caindo ─── */
 (function(){
@@ -637,11 +668,11 @@ document.getElementById('splash').addEventListener('click',function(){
   setTimeout(()=>{
     this.style.display='none';
     document.getElementById('main').classList.add('visible');
-    if(CONFIG.musica) musicToggle.style.display='flex';
+    if(CONFIG.musica||ytPronto) musicToggle.style.display='flex';
     initReveal(); startCountdown();
   },950);
 });
-musicToggle.addEventListener('click',function(){if(audio.paused)tryPlay();else audio.pause();});
+musicToggle.addEventListener('click',function(){if(tocando)pauseMusic();else tryPlay();});
 
 /* ─── REVEAL ─── */
 function initReveal(){
