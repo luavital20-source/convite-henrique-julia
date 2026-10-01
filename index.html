@@ -458,7 +458,7 @@
       <p class="sec-label reveal">confirmação de presença</p>
       <h2 class="sec-title reveal">Você <span class="it">vem?</span></h2>
       <div class="divider reveal"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
-      <p class="rsvp-note reveal d1" id="rsvpNote">A confirmação de presença é muito importante para a organização do nosso casamento. Por favor, confirme sua presença dentro do prazo informado no convite.</p>
+      <p class="rsvp-note reveal d1" id="rsvpNote">A confirmação de presença é muito importante para a organização do nosso casamento. Digite seu nome abaixo para confirmar.</p>
       <p class="rsvp-note reveal d1" id="rsvpDuvida" style="margin-top:22px;display:none">Qualquer dúvida, fale com os noivos.</p>
       <div class="reveal d2" id="rsvpAction"></div>
     </div>
@@ -519,8 +519,106 @@ const CONFIG = {
   rsvpLink: '',
 
   // 📱 WhatsApp dos NOIVOS (opcional, apenas dígitos: 55 + DDD + número) — preencha e o botão aparece
-  whatsappNoivos: ''
+  whatsappNoivos: '5571999075606'   // (71) 99907-5606
 };
+
+/* ════════════════════════════════════════════════════════════
+   👥 LISTA DE CONVIDADOS — usada na confirmação de presença.
+   Cada item: { n:'Nome', g:'Padrinho/Madrinha (opcional)' }.
+   ════════════════════════════════════════════════════════════ */
+const CONVIDADOS = [
+  {n:'Padre Gabriel', g:''},
+  {n:'Padre Leonardo', g:''},
+  {n:'Sandra', g:''},
+  {n:'Ranulfo', g:''},
+  {n:'Cecilia', g:''},
+  {n:'Raniel', g:'Padrinho'},
+  {n:'Gerson', g:''},
+  {n:'Eduarda', g:''},
+  {n:'Vitor', g:''},
+  {n:'Lucia', g:''},
+  {n:'Juliana', g:'Madrinha'},
+  {n:'Noah', g:''},
+  {n:'Oliver', g:''},
+  {n:'Felipe', g:''},
+  {n:'Pierre', g:''},
+  {n:'Julia avó', g:''},
+  {n:'Jessica', g:'Madrinha'},
+  {n:'Vinicius', g:''},
+  {n:'Jussara', g:''},
+  {n:'Dilson', g:''},
+  {n:'Salatiel', g:''},
+  {n:'Gerusa', g:''},
+  {n:'Derick', g:''},
+  {n:'Daniel', g:''},
+  {n:'Giovana', g:''},
+  {n:'Bem Hur', g:''},
+  {n:'Helena', g:''},
+  {n:'Saulo', g:''},
+  {n:'Genivaldo', g:''},
+  {n:'Ilka', g:''},
+  {n:'Deco', g:''},
+  {n:'Jamile', g:''},
+  {n:'Maria Julia', g:''},
+  {n:'Tercia', g:''},
+  {n:'Fausto', g:''},
+  {n:'Maju', g:''},
+  {n:'Riso', g:''},
+  {n:'Hortencia', g:''},
+  {n:'Raiane', g:''},
+  {n:'Tio Gilberto', g:''},
+  {n:'José Oliveira', g:''},
+  {n:'Mariazinha', g:''},
+  {n:'Gilberto', g:''},
+  {n:'Conceição', g:''},
+  {n:'José', g:'Padrinho'},
+  {n:'Denis', g:'Padrinho'},
+  {n:'Raiana', g:'Madrinha'},
+  {n:'Guilherme', g:'Padrinho'},
+  {n:'Ester', g:''},
+  {n:'Marcos', g:''},
+  {n:'Jeane', g:''},
+  {n:'Luane', g:''},
+  {n:'Rodolfo', g:''},
+  {n:'Carol', g:''},
+  {n:'Bruno', g:''},
+  {n:'Victoria', g:''},
+  {n:'Andrés', g:''},
+  {n:'Nara', g:''},
+  {n:'Henrique', g:''},
+  {n:'Herick', g:''},
+  {n:'Hércules', g:''},
+  {n:'Maria Aparecida', g:''},
+  {n:'Linda', g:'Madrinha'},
+  {n:'Cris', g:''},
+  {n:'Cristiano', g:'Padrinho'},
+  {n:'Sara', g:'Madrinha'},
+  {n:'Matheus', g:'Padrinho'},
+  {n:'Maria Luz', g:''},
+  {n:'Iracema', g:'Madrinha'},
+  {n:'Thiago', g:'Padrinho'},
+  {n:'Arthur', g:''},
+  {n:'Maria Luiza', g:''},
+  {n:'Paulo Thiago', g:''},
+  {n:'Maria Clara', g:''},
+  {n:'Samuel', g:''},
+  {n:'Eduardo', g:''},
+  {n:'Léa', g:''},
+  {n:'Eduardinho', g:''},
+  {n:'Estela', g:''},
+  {n:'Enzo', g:''},
+  {n:'Victor', g:''},
+  {n:'Evelyn', g:''},
+  {n:'Elis', g:'Madrinha'},
+  {n:'Marcio', g:'Padrinho'},
+  {n:'Eduardo Nascimento', g:''},
+  {n:'Maria Eduarda', g:''},
+  {n:'Lizinha', g:''},
+  {n:'Nilson', g:''},
+  {n:'Cristina', g:''},
+  {n:'Edna', g:''},
+  {n:'Reinaldo', g:''}
+];
 
 /* ════════════════════════════════════════════════════════════
    A partir daqui é o funcionamento — não precisa mexer.
@@ -592,21 +690,72 @@ const MANUAL = [
   }
 })();
 
-/* ─── Confirmação de presença (botões aparecem quando configurados) ─── */
+/* ─── Confirmação de presença — busca por nome + aviso no WhatsApp ─── */
 (function(){
   const box=document.getElementById('rsvpAction');
   const okIcon='<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.5"/><path d="M8.3 12.2l2.5 2.5 4.9-5.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const waIcon='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.16l-.3-.18-3 .78.8-2.92-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.16c-.25-.13-1.48-.73-1.7-.81-.23-.09-.4-.13-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.13-.56-1.36-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.43 1.03 2.6.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.14-1.19-.06-.1-.23-.16-.48-.29Z"/></svg>';
-
   const wa=(CONFIG.whatsappNoivos||'').replace(/\D/g,'');
-  const waMsg='Olá, Henrique e Julia! \uD83D\uDC8D Tenho uma dúvida sobre o casamento de vocês.';
-  let html='';
-  if(CONFIG.rsvpLink) html+='<a class="btn-fill" href="'+CONFIG.rsvpLink+'" target="_blank" rel="noopener">'+okIcon+'Confirmar presença</a>';
-  if(wa){
-    html+='<a class="btn-fill btn-wa" href="https://wa.me/'+wa+'?text='+encodeURIComponent(waMsg)+'" target="_blank" rel="noopener">'+waIcon+'Falar com os noivos</a>';
-    document.getElementById('rsvpDuvida').style.display='block';
+  const norm=t=>t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  const esc=t=>t.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const waLink=msg=>'https://wa.me/'+wa+'?text='+encodeURIComponent(msg);
+
+  function telaBusca(){
+    box.innerHTML='<div class="rsvp-form">'+
+      '<input class="rsvp-input" id="rsvpInput" type="text" placeholder="Digite seu nome" autocomplete="off">'+
+      '<div class="rsvp-chips" id="rsvpChips"></div>'+
+      '<p class="rsvp-msg" id="rsvpMsg" style="margin-top:18px"></p></div>';
+    const inp=document.getElementById('rsvpInput');
+    inp.addEventListener('input',()=>buscar(inp.value));
   }
-  if(html) box.innerHTML='<div class="rsvp-ok">'+html+'</div>';
+
+  function buscar(q){
+    const chips=document.getElementById('rsvpChips'), msg=document.getElementById('rsvpMsg');
+    const t=norm(q); chips.innerHTML=''; msg.innerHTML='';
+    if(t.length<2) return;
+    const achados=CONVIDADOS.map((c,i)=>({c,i})).filter(({c})=>norm(c.n).split(/\s+/).some(p=>p.startsWith(t))||norm(c.n).startsWith(t));
+    if(!achados.length){
+      msg.innerHTML='Não encontramos esse nome na lista.'+(wa?' <a href="'+waLink('Olá, Henrique e Julia! Sou '+q.trim()+' e não encontrei meu nome na lista de confirmação do convite.')+'" target="_blank" rel="noopener" style="color:var(--clay-deep)">Fale com os noivos</a>.':'');
+      return;
+    }
+    achados.slice(0,12).forEach(({c,i})=>{
+      const b=document.createElement('button');b.type='button';b.className='rsvp-chip';
+      b.innerHTML=esc(c.n)+(c.g?'<span>'+esc(c.g)+'</span>':'');
+      b.addEventListener('click',()=>telaPessoa(i));
+      chips.appendChild(b);
+    });
+    msg.textContent='Toque no seu nome.';
+  }
+
+  function telaPessoa(i){
+    const c=CONVIDADOS[i];
+    box.innerHTML='<div class="rsvp-ok">'+
+      '<p class="ok-name">'+esc(c.n)+'</p>'+(c.g?'<p class="ok-grupo">'+esc(c.g)+'</p>':'')+
+      '<p class="rsvp-msg">Você confirma sua presença no nosso casamento em 03 de fevereiro de 2027?</p>'+
+      '<button type="button" class="btn-fill" id="rsvpSim">'+okIcon+'Confirmar presença</button>'+
+      '<button type="button" class="rsvp-again" id="rsvpNao">Não poderei comparecer</button>'+
+      '<button type="button" class="rsvp-again" id="rsvpVoltar">Não sou eu · voltar</button></div>';
+    document.getElementById('rsvpSim').onclick=()=>telaFinal(c,true);
+    document.getElementById('rsvpNao').onclick=()=>telaFinal(c,false);
+    document.getElementById('rsvpVoltar').onclick=telaBusca;
+  }
+
+  function telaFinal(c,vai){
+    const msg=vai
+      ? 'Olá, Henrique e Julia! \uD83D\uDC8D Aqui é '+c.n+(c.g?' ('+c.g+')':'')+' e confirmo minha presença no casamento de vocês, em 03/02/2027. \uD83E\uDD0D'
+      : 'Olá, Henrique e Julia! Aqui é '+c.n+(c.g?' ('+c.g+')':'')+'. Infelizmente não poderei comparecer ao casamento de vocês, mas desejo muitas felicidades! \uD83E\uDD0D';
+    box.innerHTML='<div class="rsvp-ok">'+
+      (vai?'<span class="ok-check">'+okIcon+'</span>':'')+
+      '<p class="ok-name">'+(vai?'Presença confirmada!':'Sentiremos sua falta')+'</p>'+
+      '<p class="rsvp-msg">'+(vai
+        ? 'Obrigado, <b>'+esc(c.n)+'</b>! Agora toque no botão abaixo para avisar os noivos pelo WhatsApp — só assim sua confirmação chega até eles.'
+        : 'Obrigado por avisar, <b>'+esc(c.n)+'</b>. Toque no botão abaixo para enviar a mensagem aos noivos.')+'</p>'+
+      (wa?'<a class="btn-fill btn-wa" href="'+waLink(msg)+'" target="_blank" rel="noopener">'+waIcon+'Avisar os noivos</a>':'')+
+      '<button type="button" class="rsvp-again" id="rsvpOutro">Confirmar outra pessoa</button></div>';
+    document.getElementById('rsvpOutro').onclick=telaBusca;
+  }
+
+  telaBusca();
 })();
 
 /* ─── MÚSICA ─── */
